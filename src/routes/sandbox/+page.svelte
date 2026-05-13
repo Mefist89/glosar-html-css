@@ -5,6 +5,8 @@
 	const challenges = data.challenges;
 
 	let currentIdx = $state(0);
+	let showHint = $state(false);
+	let showSolution = $state(false);
 	/** @type {Set<number>} */
 	let completed = $state(new Set());
 	let feedbackHtml = $state('');
@@ -121,9 +123,10 @@
 		}
 	}
 
-	/** @param {number} idx */
 	function selectChallenge(idx) {
 		currentIdx = idx;
+		showHint = false;
+		showSolution = false;
 		feedbackHtml = '';
 		feedbackType = '';
 		if (editorView) {
@@ -174,6 +177,32 @@
 				<strong class="text-primary">Provocarea #{current.id}:</strong>
 				{@html current.task}
 			</p>
+
+			<div class="flex flex-wrap gap-2 mt-3">
+				{#if current.hint}
+					<button class="btn btn-xs btn-info btn-outline" onclick={() => showHint = !showHint}>
+						{showHint ? 'Ascunde Indiciul' : '💡 Arată Indiciul'}
+					</button>
+				{/if}
+				{#if current.solution}
+					<button class="btn btn-xs btn-warning btn-outline" onclick={() => showSolution = !showSolution}>
+						{showSolution ? 'Ascunde Soluția' : '👀 Arată Soluția'}
+					</button>
+				{/if}
+			</div>
+
+			{#if showHint && current.hint}
+				<div class="mt-2 p-3 bg-base-300/80 text-base-content rounded-box border-l-4 border-l-info border-y border-r border-base-content/10 text-sm animate-in shadow-sm">
+					<strong class="text-info">💡 Indiciu:</strong> {current.hint}
+				</div>
+			{/if}
+
+			{#if showSolution && current.solution}
+				<div class="mt-2 p-3 bg-base-300/80 text-base-content rounded-box border-l-4 border-l-warning border-y border-r border-base-content/10 text-sm animate-in shadow-sm">
+					<strong class="text-warning">👀 Soluție completă:</strong>
+					<pre class="mt-2 p-2 bg-base-100 rounded overflow-x-auto text-xs font-mono border border-base-content/5"><code>{current.solution}</code></pre>
+				</div>
+			{/if}
 		</div>
 	</div>
 
