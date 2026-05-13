@@ -1,72 +1,353 @@
 {
   "glossary": [
-    { "tag": "<html>", "desc": "Eticheta rădăcină a documentului HTML. Conține toate celelalte elemente.", "cat": "structure" },
-    { "tag": "<head>", "desc": "Definește secțiunea de antet – conține meta-informații, titlul și linkuri CSS.", "cat": "structure" },
-    { "tag": "<title>", "desc": "Stabilește titlul paginii afișat în tab-ul browserului.", "cat": "structure" },
-    { "tag": "<body>", "desc": "Conține tot conținutul vizibil al paginii web.", "cat": "structure" },
-    { "tag": "<h1>", "desc": "Titlu de nivel maxim (heading 1). Cel mai important titlu din pagină.", "cat": "text" },
-    { "tag": "<h2>", "desc": "Titlu de nivelul 2 – subtitlu important.", "cat": "text" },
-    { "tag": "<h3>", "desc": "Titlu de nivelul 3 – secțiune secundară.", "cat": "text" },
-    { "tag": "<h4>", "desc": "Titlu de nivelul 4 – subsecțiune.", "cat": "text" },
-    { "tag": "<p>", "desc": "Definește un paragraf de text. Adaugă spațiu automat sus și jos.", "cat": "text" },
-    { "tag": "<b>", "desc": "Face textul să apară îngroșat (bold).", "cat": "text" },
-    { "tag": "<i>", "desc": "Face textul să apară în italic (cursiv).", "cat": "text" },
-    { "tag": "<center>", "desc": "Aliniază conținutul pe centrul paginii (tag depreciat).", "cat": "text" },
-    { "tag": "<br>", "desc": "Introduce o linie nouă (break) în text. Tag auto-închis.", "cat": "text" },
-    { "tag": "<ul>", "desc": "Creează o listă neordonată (cu puncte/bullet points).", "cat": "list" },
-    { "tag": "<ol>", "desc": "Creează o listă ordonată (numerotată automat).", "cat": "list" },
-    { "tag": "<li>", "desc": "Definește un element individual dintr-o listă (ul sau ol).", "cat": "list" },
-    { "tag": "<table>", "desc": "Definește structura unui tabel HTML.", "cat": "table" },
-    { "tag": "<tr>", "desc": "Definește un rând (table row) în cadrul unui tabel.", "cat": "table" },
-    { "tag": "<td>", "desc": "Definește o celulă standard de date într-un tabel.", "cat": "table" },
-    { "tag": "<th>", "desc": "Definește o celulă de antet (header) într-un tabel. Textul apare bold și centrat.", "cat": "table" },
-    { "tag": "<a>", "desc": "Creează un hyperlink. Folosește atributul href pentru destinație.", "cat": "media" },
-    { "tag": "<img>", "desc": "Inserează o imagine în pagină. Atribute: src, width, height. Tag auto-închis.", "cat": "media" }
+    {
+      "tag": "<html>",
+      "desc": "Eticheta rădăcină a documentului HTML. Conține toate celelalte elemente.",
+      "cat": "structure",
+      "details": "Elementul rădăcină (root) înconjoară tot conținutul paginii. Orice alt element HTML trebuie să fie plasat în interiorul acestui tag. Adesea include atributul 'lang' pentru a specifica limba paginii.",
+      "example": "<!DOCTYPE html>\n<html lang=\"ro\">\n  <!-- conținutul paginii -->\n</html>"
+    },
+    {
+      "tag": "<head>",
+      "desc": "Definește secțiunea de antet – conține meta-informații, titlul și linkuri CSS.",
+      "cat": "structure",
+      "details": "Secțiunea <head> nu este vizibilă pentru utilizatori în mod direct. Conține setări esențiale pentru browser, precum setul de caractere (meta charset), legăturile către fișierele CSS, și titlul paginii.",
+      "example": "<head>\n  <meta charset=\"UTF-8\">\n  <title>Pagina Mea</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>"
+    },
+    {
+      "tag": "<title>",
+      "desc": "Stabilește titlul paginii afișat în tab-ul browserului.",
+      "cat": "structure",
+      "details": "Textul din interiorul tag-ului <title> apare pe tab-ul browserului și este folosit de motoarele de căutare ca titlu principal al paginii în rezultatele căutării.",
+      "example": "<title>Lecția 1: Introducere în HTML</title>"
+    },
+    {
+      "tag": "<body>",
+      "desc": "Conține tot conținutul vizibil al paginii web.",
+      "cat": "structure",
+      "details": "Orice text, imagine, link sau alt conținut care dorești să apară în fereastra principală a browserului trebuie plasat în interiorul tag-ului <body>.",
+      "example": "<body>\n  <h1>Titlu vizibil</h1>\n  <p>Acesta este un text care apare pe ecran.</p>\n</body>"
+    },
+    {
+      "tag": "<h1>",
+      "desc": "Titlu de nivel maxim (heading 1). Cel mai important titlu din pagină.",
+      "cat": "text",
+      "details": "Folosit pentru cel mai important titlu al paginii. Este o bună practică să ai un singur <h1> pe pagină pentru o structură SEO corectă.",
+      "example": "<h1>Portofoliul meu de proiecte</h1>"
+    },
+    {
+      "tag": "<h2>",
+      "desc": "Titlu de nivelul 2 – subtitlu important.",
+      "cat": "text",
+      "details": "Folosit pentru secțiunile principale ale paginii, fiind subordonat titlului <h1>.",
+      "example": "<h2>Proiecte web</h2>\n<p>Aici sunt proiectele pe care le-am creat în HTML.</p>"
+    },
+    {
+      "tag": "<h3>",
+      "desc": "Titlu de nivelul 3 – secțiune secundară.",
+      "cat": "text",
+      "details": "Titlu de nivelul 3, folosit pentru a divide o secțiune <h2> în subsecțiuni mai mici.",
+      "example": "<h3>Proiectul 1: Magazin Online</h3>"
+    },
+    {
+      "tag": "<h4>",
+      "desc": "Titlu de nivelul 4 – subsecțiune.",
+      "cat": "text",
+      "details": "Titlu de nivelul 4, util în ierarhii foarte adânci de conținut.",
+      "example": "<h4>Specificații tehnice</h4>"
+    },
+    {
+      "tag": "<p>",
+      "desc": "Definește un paragraf de text. Adaugă spațiu automat sus și jos.",
+      "cat": "text",
+      "details": "Folosit pentru a grupa blocuri de text. Browserul adaugă automat o margine (spațiu gol) deasupra și dedesubtul fiecărui paragraf pentru lizibilitate.",
+      "example": "<p>HTML înseamnă HyperText Markup Language.</p>\n<p>Este limbajul de bază al web-ului.</p>"
+    },
+    {
+      "tag": "<b>",
+      "desc": "Face textul să apară îngroșat (bold).",
+      "cat": "text",
+      "details": "Atrage atenția asupra unui text, făcându-l vizual mai gros (bold). Pentru a indica importanța semantică (nu doar vizuală), se preferă folosirea tag-ului <strong>.",
+      "example": "<p>Atenție: Acest câmp este <b>obligatoriu</b>.</p>"
+    },
+    {
+      "tag": "<i>",
+      "desc": "Face textul să apară în italic (cursiv).",
+      "cat": "text",
+      "details": "Inclină textul (italic). Deseori folosit pentru termeni tehnici, cuvinte din alte limbi sau denumiri de opere. Semantic, este de preferat <em> pentru accentuare.",
+      "example": "<p>Numele științific al lupului este <i>Canis lupus</i>.</p>"
+    },
+    {
+      "tag": "<center>",
+      "desc": "Aliniază conținutul pe centrul paginii (tag depreciat).",
+      "cat": "text",
+      "details": "Acest tag a fost folosit în trecut pentru a centra textul și imaginile, dar acum este considerat învechit (depreciat). Astăzi, centrarea se face exclusiv prin CSS (ex: text-align: center).",
+      "example": "<!-- Nu este recomandat -->\n<center>Text centrat</center>\n\n<!-- Varianta modernă -->\n<div style=\"text-align: center;\">Text centrat</div>"
+    },
+    {
+      "tag": "<br>",
+      "desc": "Introduce o linie nouă (break) în text. Tag auto-închis.",
+      "cat": "text",
+      "details": "Fortează trecerea la o linie nouă. Spre deosebire de paragraf (<p>), nu adaugă spațiu suplimentar între linii. Este util pentru poezii sau adrese.",
+      "example": "<p>Strada Mihai Eminescu nr. 1<br>\nBucurești, România</p>"
+    },
+    {
+      "tag": "<ul>",
+      "desc": "Creează o listă neordonată (cu puncte/bullet points).",
+      "cat": "list",
+      "details": "Un container pentru liste în care ordinea elementelor nu este importantă. Elementele din interior (< li >) vor fi marcate implicit cu un punct rotund (bullet).",
+      "example": "<ul>\n  <li>Mere</li>\n  <li>Pere</li>\n  <li>Banane</li>\n</ul>"
+    },
+    {
+      "tag": "<ol>",
+      "desc": "Creează o listă ordonată (numerotată automat).",
+      "cat": "list",
+      "details": "Un container pentru liste în care ordinea contează (cum ar fi pașii unei rețete). Elementele vor fi numerotate automat (1, 2, 3...).",
+      "example": "<ol>\n  <li>Deschideți editorul.</li>\n  <li>Scrieți codul HTML.</li>\n  <li>Salvați fișierul.</li>\n</ol>"
+    },
+    {
+      "tag": "<li>",
+      "desc": "Definește un element individual dintr-o listă (ul sau ol).",
+      "cat": "list",
+      "details": "Reprezintă un singur rând (element) dintr-o listă. Trebuie să fie întotdeauna plasat în interiorul unui tag <ul> sau <ol>.",
+      "example": "<li>Acesta este un element din listă</li>"
+    },
+    {
+      "tag": "<table>",
+      "desc": "Definește structura unui tabel HTML.",
+      "cat": "table",
+      "details": "Elementul principal pentru crearea unui tabel. Găzduiește rândurile (<tr>) și celulele (<td>, <th>).",
+      "example": "<table border=\"1\">\n  <tr>\n    <th>Nume</th>\n    <th>Nota</th>\n  </tr>\n  <tr>\n    <td>Ion</td>\n    <td>10</td>\n  </tr>\n</table>"
+    },
+    {
+      "tag": "<tr>",
+      "desc": "Definește un rând (table row) în cadrul unui tabel.",
+      "cat": "table",
+      "details": "Definește un rând orizontal în interiorul unui tabel. Conține de obicei celule <th> (pentru antet) sau <td> (pentru date).",
+      "example": "<tr>\n  <td>Măr</td>\n  <td>5 RON</td>\n</tr>"
+    },
+    {
+      "tag": "<td>",
+      "desc": "Definește o celulă standard de date într-un tabel.",
+      "cat": "table",
+      "details": "Reprezintă o singură celulă care conține informații. Mai multe tag-uri <td> formează coloanele unui rând <tr>.",
+      "example": "<td>Informație 1</td>"
+    },
+    {
+      "tag": "<th>",
+      "desc": "Definește o celulă de antet (header) într-un tabel. Textul apare bold și centrat.",
+      "cat": "table",
+      "details": "Similar cu <td>, dar folosit pentru titlurile coloanelor sau rândurilor (antet). Textul din interior va fi automat aliniat pe centru și îngroșat de către browser.",
+      "example": "<th>Numele Elevului</th>"
+    },
+    {
+      "tag": "<a>",
+      "desc": "Creează un hyperlink. Folosește atributul href pentru destinație.",
+      "cat": "media",
+      "details": "Ancora (Anchor) transformă orice conținut din interiorul său într-un link care poate fi apăsat. Atributul obligatoriu este 'href', care indică destinația.",
+      "example": "<a href=\"https://wikipedia.org\">Vizitează Wikipedia</a>"
+    },
+    {
+      "tag": "<img>",
+      "desc": "Inserează o imagine în pagină. Atribute: src, width, height. Tag auto-închis.",
+      "cat": "media",
+      "details": "Afișează o imagine. Nu are tag de închidere. Necesită atributul 'src' pentru adresa imaginii și atributul 'alt' pentru un text descriptiv (util pentru accesibilitate).",
+      "example": "<img src=\"pisica.jpg\" alt=\"O pisică jucăușă\" width=\"200\">"
+    }
   ],
   "attributes": [
-    { "tag": "href", "desc": "Specifică URL-ul destinație al unui link <a>. Ex: href=\"https://google.com\"", "cat": "media" },
-    { "tag": "target", "desc": "Determină unde se deschide linkul. target=\"_blank\" = fereastră nouă.", "cat": "media" },
-    { "tag": "src", "desc": "Specifică calea/URL-ul sursei unei imagini <img>.", "cat": "media" },
-    { "tag": "colspan", "desc": "Permite unei celule <td> să se extindă pe mai multe coloane.", "cat": "table" },
-    { "tag": "rowspan", "desc": "Permite unei celule <td> să se extindă pe mai multe rânduri.", "cat": "table" },
-    { "tag": "border", "desc": "Setează bordura vizibilă a unui tabel. Ex: border=\"1\".", "cat": "table" },
-    { "tag": "width / height", "desc": "Setează dimensiunile unui element (imagine, tabel). Ex: width=\"300\".", "cat": "media" },
-    { "tag": "id", "desc": "Identificator unic pentru un element HTML. Folosit pentru ancore și CSS.", "cat": "structure" },
-    { "tag": "color (CSS)", "desc": "Proprietate CSS pentru culoarea textului. Ex: color: orange;", "cat": "text" },
-    { "tag": "font-size (CSS)", "desc": "Proprietate CSS pentru dimensiunea fontului. Ex: font-size: 16px;", "cat": "text" }
+    {
+      "tag": "href",
+      "desc": "Specifică URL-ul destinație al unui link <a>. Ex: href=\"https://google.com\"",
+      "cat": "media",
+      "details": "Hypertext Reference - este cel mai important atribut al tag-ului <a>. Fără el, link-ul nu duce nicăieri.",
+      "example": "<a href=\"contact.html\">Contactează-ne</a>"
+    },
+    {
+      "tag": "target",
+      "desc": "Determină unde se deschide linkul. target=\"_blank\" = fereastră nouă.",
+      "cat": "media",
+      "details": "Controlează locul unde se va deschide pagina legată de un link. Valoarea '_blank' instruiește browserul să deschidă link-ul într-un tab sau o fereastră nouă.",
+      "example": "<a href=\"https://google.com\" target=\"_blank\">Google</a>"
+    },
+    {
+      "tag": "src",
+      "desc": "Specifică calea/URL-ul sursei unei imagini <img>.",
+      "cat": "media",
+      "details": "Source (sursă) - indică browserului de unde să descarce fișierul imaginii. Poate fi o cale relativă (din același dosar) sau absolută (o adresă de pe internet).",
+      "example": "<img src=\"https://exemplu.ro/logo.png\" alt=\"Logo\">"
+    },
+    {
+      "tag": "colspan",
+      "desc": "Permite unei celule <td> să se extindă pe mai multe coloane.",
+      "cat": "table",
+      "details": "Column Span - forțează o celulă dintr-un tabel (<td> sau <th>) să se extindă orizontal, combinând mai multe coloane într-una singură.",
+      "example": "<tr>\n  <td colspan=\"2\">Această celulă ocupă 2 coloane</td>\n</tr>"
+    },
+    {
+      "tag": "rowspan",
+      "desc": "Permite unei celule <td> să se extindă pe mai multe rânduri.",
+      "cat": "table",
+      "details": "Row Span - forțează o celulă să se extindă vertical, acoperind mai multe rânduri din tabel.",
+      "example": "<tr>\n  <td rowspan=\"2\">Ocupă 2 rânduri</td>\n  <td>Celula 2</td>\n</tr>"
+    },
+    {
+      "tag": "border",
+      "desc": "Setează bordura vizibilă a unui tabel. Ex: border=\"1\".",
+      "cat": "table",
+      "details": "Adaugă o linie simplă vizibilă în jurul tabelului și a celulelor sale. Deși încă suportat, este preferat să folosiți CSS pentru stilizarea marginilor.",
+      "example": "<table border=\"1\">\n  <!-- conținutul tabelului -->\n</table>"
+    },
+    {
+      "tag": "width / height",
+      "desc": "Setează dimensiunile unui element (imagine, tabel). Ex: width=\"300\".",
+      "cat": "media",
+      "details": "Setează lățimea (width) și înălțimea (height) elementului în pixeli. Folosit des pentru imagini sau videoclipuri pentru a le ajusta proporțiile.",
+      "example": "<img src=\"poza.jpg\" width=\"500\" height=\"300\" alt=\"Peisaj\">"
+    },
+    {
+      "tag": "id",
+      "desc": "Identificator unic pentru un element HTML. Folosit pentru ancore și CSS.",
+      "cat": "structure",
+      "details": "Un identificator unic pe pagină. Un singur element poate avea un anumit 'id'. Este folosit pentru a lega codul JavaScript de element sau pentru link-uri către părți specifice ale paginii (ancore).",
+      "example": "<div id=\"sectiunea-contact\">\n  <h2>Contact</h2>\n</div>\n<!-- Link către secțiune: -->\n<a href=\"#sectiunea-contact\">Mergi la contact</a>"
+    },
+    {
+      "tag": "color (CSS)",
+      "desc": "Proprietate CSS pentru culoarea textului. Ex: color: orange;",
+      "cat": "text",
+      "details": "Aceasta este o regulă CSS, nu un atribut HTML. Se adaugă în interiorul atributului 'style' (sau într-un fișier separat) pentru a colora textul.",
+      "example": "<p style=\"color: red;\">Acest text este roșu.</p>"
+    },
+    {
+      "tag": "font-size (CSS)",
+      "desc": "Proprietate CSS pentru dimensiunea fontului. Ex: font-size: 16px;",
+      "cat": "text",
+      "details": "Regulă CSS utilizată pentru a controla cât de mare este textul, adesea setat în pixeli (px), em sau rem.",
+      "example": "<p style=\"font-size: 24px;\">Acest text este mai mare.</p>"
+    }
   ],
   "quiz": [
-    { "type": "fill", "q": "Tag-ul HTML utilizat pentru a defini un rând într-un tabel este:", "a": "tr", "hint": "table row" },
-    { "type": "fill", "q": "Tag-ul pentru o listă ordonată (numerotată) este:", "a": "ol", "hint": "ordered list" },
-    { "type": "fill", "q": "Atributul care deschide un link într-o fereastră nouă este:", "a": "target", "hint": "target=\"_blank\"" },
-    { "type": "fill", "q": "Tag-ul pentru inserarea unei imagini în pagină este:", "a": "img", "hint": "auto-închis" },
-    { "type": "fill", "q": "Proprietatea CSS pentru a schimba culoarea textului este:", "a": "color", "hint": "color: red;" },
-    { "type": "fill", "q": "Atributul care specifică adresa URL a unui link este:", "a": "href", "hint": "hypertext reference" },
-    { "type": "fill", "q": "Tag-ul HTML pentru text îngroșat (bold) este:", "a": "b", "hint": "bold" },
-    { "type": "fill", "q": "Tag-ul care definește o celulă de date într-un tabel este:", "a": "td", "hint": "table data" },
-    { "type": "fill", "q": "Proprietatea CSS pentru dimensiunea textului este:", "a": "font-size", "hint": "font-size: 16px;" },
-    { "type": "fill", "q": "Atributul care permite unei celule să ocupe mai multe coloane este:", "a": "colspan", "hint": "column span" },
-    { "type": "fill", "q": "Tag-ul pentru a crea o linie nouă (fără paragraf nou) este:", "a": "br", "hint": "break" },
-    { "type": "fill", "q": "Tag-ul rădăcină al oricărui document HTML este:", "a": "html", "hint": "root element" },
-    { "type": "fill", "q": "Tag-ul care definește titlul paginii în tab-ul browserului este:", "a": "title", "hint": "se află în <head>" },
+    {
+      "type": "fill",
+      "q": "Tag-ul HTML utilizat pentru a defini un rând într-un tabel este:",
+      "a": "tr",
+      "hint": "table row"
+    },
+    {
+      "type": "fill",
+      "q": "Tag-ul pentru o listă ordonată (numerotată) este:",
+      "a": "ol",
+      "hint": "ordered list"
+    },
+    {
+      "type": "fill",
+      "q": "Atributul care deschide un link într-o fereastră nouă este:",
+      "a": "target",
+      "hint": "target=\"_blank\""
+    },
+    {
+      "type": "fill",
+      "q": "Tag-ul pentru inserarea unei imagini în pagină este:",
+      "a": "img",
+      "hint": "auto-închis"
+    },
+    {
+      "type": "fill",
+      "q": "Proprietatea CSS pentru a schimba culoarea textului este:",
+      "a": "color",
+      "hint": "color: red;"
+    },
+    {
+      "type": "fill",
+      "q": "Atributul care specifică adresa URL a unui link este:",
+      "a": "href",
+      "hint": "hypertext reference"
+    },
+    {
+      "type": "fill",
+      "q": "Tag-ul HTML pentru text îngroșat (bold) este:",
+      "a": "b",
+      "hint": "bold"
+    },
+    {
+      "type": "fill",
+      "q": "Tag-ul care definește o celulă de date într-un tabel este:",
+      "a": "td",
+      "hint": "table data"
+    },
+    {
+      "type": "fill",
+      "q": "Proprietatea CSS pentru dimensiunea textului este:",
+      "a": "font-size",
+      "hint": "font-size: 16px;"
+    },
+    {
+      "type": "fill",
+      "q": "Atributul care permite unei celule să ocupe mai multe coloane este:",
+      "a": "colspan",
+      "hint": "column span"
+    },
+    {
+      "type": "fill",
+      "q": "Tag-ul pentru a crea o linie nouă (fără paragraf nou) este:",
+      "a": "br",
+      "hint": "break"
+    },
+    {
+      "type": "fill",
+      "q": "Tag-ul rădăcină al oricărui document HTML este:",
+      "a": "html",
+      "hint": "root element"
+    },
+    {
+      "type": "fill",
+      "q": "Tag-ul care definește titlul paginii în tab-ul browserului este:",
+      "a": "title",
+      "hint": "se află în <head>"
+    },
     {
       "type": "match",
       "q": "Potrivește tag-urile cu descrierea lor corectă:",
       "pairs": [
-        { "left": "<ul>", "right": "Listă neordonată" },
-        { "left": "<ol>", "right": "Listă ordonată" },
-        { "left": "<li>", "right": "Element de listă" },
-        { "left": "<p>", "right": "Paragraf" }
+        {
+          "left": "<ul>",
+          "right": "Listă neordonată"
+        },
+        {
+          "left": "<ol>",
+          "right": "Listă ordonată"
+        },
+        {
+          "left": "<li>",
+          "right": "Element de listă"
+        },
+        {
+          "left": "<p>",
+          "right": "Paragraf"
+        }
       ]
     },
     {
       "type": "match",
       "q": "Potrivește atributele cu funcția lor:",
       "pairs": [
-        { "left": "href", "right": "URL destinație" },
-        { "left": "target", "right": "Fereastră nouă" },
-        { "left": "colspan", "right": "Extindere coloane" },
-        { "left": "border", "right": "Bordură tabel" }
+        {
+          "left": "href",
+          "right": "URL destinație"
+        },
+        {
+          "left": "target",
+          "right": "Fereastră nouă"
+        },
+        {
+          "left": "colspan",
+          "right": "Extindere coloane"
+        },
+        {
+          "left": "border",
+          "right": "Bordură tabel"
+        }
       ]
     }
   ],
@@ -76,10 +357,24 @@
       "title": "Titlu + Paragraf",
       "task": "Creează un titlu <h1> cu textul \"Școala mea\" și un paragraf <p> cu textul \"Bine ați venit!\".",
       "checks": [
-        { "desc": "Există un tag <h1>", "selector": "h1" },
-        { "desc": "H1 conține textul \"Școala mea\"", "selector": "h1", "textContains": "coala mea" },
-        { "desc": "Există un tag <p>", "selector": "p" },
-        { "desc": "Paragraful conține \"Bine ați venit\"", "selector": "p", "textContains": "bine" }
+        {
+          "desc": "Există un tag <h1>",
+          "selector": "h1"
+        },
+        {
+          "desc": "H1 conține textul \"Școala mea\"",
+          "selector": "h1",
+          "textContains": "coala mea"
+        },
+        {
+          "desc": "Există un tag <p>",
+          "selector": "p"
+        },
+        {
+          "desc": "Paragraful conține \"Bine ați venit\"",
+          "selector": "p",
+          "textContains": "bine"
+        }
       ]
     },
     {
@@ -87,10 +382,28 @@
       "title": "Imagine cu dimensiuni",
       "task": "Inserează o imagine <img> cu src=\"scoala.jpg\", width=\"300\" și height=\"200\".",
       "checks": [
-        { "desc": "Există un tag <img>", "selector": "img" },
-        { "desc": "Atributul src este \"scoala.jpg\"", "selector": "img", "attr": "src", "value": "scoala.jpg" },
-        { "desc": "Width = 300", "selector": "img", "attr": "width", "value": "300" },
-        { "desc": "Height = 200", "selector": "img", "attr": "height", "value": "200" }
+        {
+          "desc": "Există un tag <img>",
+          "selector": "img"
+        },
+        {
+          "desc": "Atributul src este \"scoala.jpg\"",
+          "selector": "img",
+          "attr": "src",
+          "value": "scoala.jpg"
+        },
+        {
+          "desc": "Width = 300",
+          "selector": "img",
+          "attr": "width",
+          "value": "300"
+        },
+        {
+          "desc": "Height = 200",
+          "selector": "img",
+          "attr": "height",
+          "value": "200"
+        }
       ]
     },
     {
@@ -98,10 +411,26 @@
       "title": "Tabel cu bordură",
       "task": "Creează un <table> cu border=\"1\", cel puțin 2 rânduri <tr> și 2 celule <td> per rând.",
       "checks": [
-        { "desc": "Există un tag <table>", "selector": "table" },
-        { "desc": "Tabelul are border=\"1\"", "selector": "table", "attr": "border", "value": "1" },
-        { "desc": "Cel puțin 2 rânduri <tr>", "selector": "table tr", "minCount": 2 },
-        { "desc": "Celule <td> în rânduri", "selector": "table tr td", "minCount": 2 }
+        {
+          "desc": "Există un tag <table>",
+          "selector": "table"
+        },
+        {
+          "desc": "Tabelul are border=\"1\"",
+          "selector": "table",
+          "attr": "border",
+          "value": "1"
+        },
+        {
+          "desc": "Cel puțin 2 rânduri <tr>",
+          "selector": "table tr",
+          "minCount": 2
+        },
+        {
+          "desc": "Celule <td> în rânduri",
+          "selector": "table tr td",
+          "minCount": 2
+        }
       ]
     },
     {
@@ -109,8 +438,15 @@
       "title": "Liste ordonate",
       "task": "Creează o listă ordonată <ol> cu cel puțin 3 elemente <li>.",
       "checks": [
-        { "desc": "Există un tag <ol>", "selector": "ol" },
-        { "desc": "Cel puțin 3 elemente <li>", "selector": "ol li", "minCount": 3 }
+        {
+          "desc": "Există un tag <ol>",
+          "selector": "ol"
+        },
+        {
+          "desc": "Cel puțin 3 elemente <li>",
+          "selector": "ol li",
+          "minCount": 3
+        }
       ]
     },
     {
@@ -118,10 +454,27 @@
       "title": "Link extern",
       "task": "Creează un link <a> cu textul \"Google\", href=\"https://google.com\" și target=\"_blank\".",
       "checks": [
-        { "desc": "Există un tag <a>", "selector": "a" },
-        { "desc": "Textul linkului este \"Google\"", "selector": "a", "textContains": "google" },
-        { "desc": "href conține \"google.com\"", "selector": "a", "attr": "href", "valueContains": "google.com" },
-        { "desc": "target=\"_blank\"", "selector": "a", "attr": "target", "value": "_blank" }
+        {
+          "desc": "Există un tag <a>",
+          "selector": "a"
+        },
+        {
+          "desc": "Textul linkului este \"Google\"",
+          "selector": "a",
+          "textContains": "google"
+        },
+        {
+          "desc": "href conține \"google.com\"",
+          "selector": "a",
+          "attr": "href",
+          "valueContains": "google.com"
+        },
+        {
+          "desc": "target=\"_blank\"",
+          "selector": "a",
+          "attr": "target",
+          "value": "_blank"
+        }
       ]
     },
     {
@@ -129,9 +482,20 @@
       "title": "Text formatat CSS",
       "task": "Creează un paragraf <p> cu style inline: culoare orange și dimensiune font 20px.",
       "checks": [
-        { "desc": "Există un tag <p>", "selector": "p" },
-        { "desc": "Stilul conține color: orange", "selector": "p", "styleContains": "color:orange" },
-        { "desc": "Stilul conține font-size: 20px", "selector": "p", "styleContains": "font-size:20px" }
+        {
+          "desc": "Există un tag <p>",
+          "selector": "p"
+        },
+        {
+          "desc": "Stilul conține color: orange",
+          "selector": "p",
+          "styleContains": "color:orange"
+        },
+        {
+          "desc": "Stilul conține font-size: 20px",
+          "selector": "p",
+          "styleContains": "font-size:20px"
+        }
       ]
     }
   ]

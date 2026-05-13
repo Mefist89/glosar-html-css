@@ -6,7 +6,7 @@
 	let currentTheme = $state('night');
 
 	function toggleTheme() {
-		currentTheme = currentTheme === 'night' ? 'emerald' : 'night';
+		currentTheme = currentTheme === 'night' ? 'warmlight' : 'night';
 		document.documentElement.setAttribute('data-theme', currentTheme);
 	}
 
@@ -43,7 +43,7 @@
 				HTML<span class="text-secondary drop-shadow-[0_0_10px_var(--color-secondary)]">/CSS</span> Trainer
 			</h1>
 		</div>
-		<p class="text-base-content/80 mt-2 text-sm">Pregătire interactivă pentru teză • Clasa a 10-a</p>
+		<p class="text-base-content/80 mt-2 text-sm">Pregătire interactivă pentru teză • Clasa a 11-a</p>
 	</header>
 
 	<!-- Navigation -->
