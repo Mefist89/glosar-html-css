@@ -48,7 +48,7 @@
 
 	<!-- Navigation -->
 	<nav class="sticky top-0 z-50 backdrop-blur-xl bg-base-100/80 border-b border-base-content/10">
-		<div class="flex justify-center gap-2 p-3 max-w-lg mx-auto">
+		<div class="flex justify-center gap-2 p-3 max-w-xl mx-auto">
 			<a href="/" class="btn btn-sm flex-1 gap-2"
 				class:btn-primary={isActive('/')}
 				class:btn-ghost={!isActive('/')}>
@@ -64,11 +64,16 @@
 				class:btn-ghost={!isActive('/sandbox')}>
 				<span>💻</span> Sandbox
 			</a>
+			<a href="/practica" class="btn btn-sm flex-1 gap-2"
+				class:btn-primary={isActive('/practica')}
+				class:btn-ghost={!isActive('/practica')}>
+				<span>⚡</span> Practica
+			</a>
 		</div>
 	</nav>
 
 	<!-- Main Content -->
-	<main class="flex-1 max-w-5xl w-full mx-auto px-4 py-8">
+	<main class="flex-1 max-w-7xl w-full mx-auto px-4 py-8">
 		{@render children()}
 	</main>
 

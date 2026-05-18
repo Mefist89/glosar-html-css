@@ -38,6 +38,10 @@
         <span class="nav-icon">💻</span>
         <span class="nav-label">Sandbox</span>
       </button>
+      <button class="nav-btn" data-page="practica" id="nav-practica">
+        <span class="nav-icon">⚡</span>
+        <span class="nav-label">Practica</span>
+      </button>
     </div>
     <div class="nav-indicator" id="nav-indicator"></div>
   </nav>
@@ -166,6 +170,56 @@
 
       <!-- Sandbox Feedback -->
       <div class="sandbox-feedback" id="sandbox-feedback"></div>
+    </section>
+
+    <!-- ——— PAGE 4: PRACTICA ——— -->
+    <section class="page" id="page-practica">
+      <div class="page-header">
+        <h2>Practica – Exerciții</h2>
+        <p>Urmărește fișierul PDF și rezolvă exercițiile în editoarele de mai jos</p>
+      </div>
+
+      <div class="practica-layout">
+        <!-- PDF Viewer pe stânga -->
+        <div class="pdf-panel">
+          <iframe src="src/resources/Html_Css.pdf" class="pdf-frame"></iframe>
+        </div>
+        
+        <!-- Editoare pe dreapta -->
+        <div class="practica-editors">
+          <div class="editor-panel">
+            <div class="panel-header">
+              <span class="panel-dot red"></span>
+              <span class="panel-dot yellow"></span>
+              <span class="panel-dot green"></span>
+              <span class="panel-title">index.html</span>
+            </div>
+            <div class="line-numbers" id="practica-html-lines">1</div>
+            <textarea id="practica-html-editor" class="practica-editor" spellcheck="false" placeholder="Scrie codul HTML aici..."></textarea>
+          </div>
+
+          <div class="editor-panel">
+            <div class="panel-header">
+              <span class="panel-dot red"></span>
+              <span class="panel-dot yellow"></span>
+              <span class="panel-dot green"></span>
+              <span class="panel-title">style.css</span>
+            </div>
+            <div class="line-numbers" id="practica-css-lines">1</div>
+            <textarea id="practica-css-editor" class="practica-editor" spellcheck="false" placeholder="Scrie codul CSS aici..."></textarea>
+          </div>
+
+          <div class="preview-panel" style="flex: 1.5; min-height: 250px;">
+            <div class="panel-header preview-header">
+              <span class="panel-dot red"></span>
+              <span class="panel-dot yellow"></span>
+              <span class="panel-dot green"></span>
+              <span class="panel-title">Preview</span>
+            </div>
+            <iframe id="practica-preview-frame" sandbox="allow-same-origin allow-scripts"></iframe>
+          </div>
+        </div>
+      </div>
     </section>
 
   </main>

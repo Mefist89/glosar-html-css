@@ -191,6 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFilters();
   initQuiz();
   initSandbox();
+  initPractica();
 });
 
 // ═══════════ NAVIGATION ═══════════
@@ -521,4 +522,67 @@ function checkSandboxCode() {
     fb.className = "sandbox-feedback show error";
     fb.innerHTML = `❌ <strong>Mai încearcă.</strong> Nicio cerință nu este îndeplinită încă.${listHTML}`;
   }
+}
+
+// ═══════════ PRACTICA ═══════════
+function initPractica() {
+  const htmlEditor = $("#practica-html-editor");
+  const cssEditor = $("#practica-css-editor");
+  if (!htmlEditor || !cssEditor) return;
+
+  const updatePracticaPreview = () => {
+    const htmlCode = htmlEditor.value;
+    const cssCode = cssEditor.value;
+    const frame = $("#practica-preview-frame");
+    if (!frame) return;
+    const doc = frame.contentDocument || frame.contentWindow.document;
+    doc.open();
+    doc.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <style>${cssCode}</style>
+      </head>
+      <body>
+        ${htmlCode}
+      </body>
+      </html>
+    `);
+    doc.close();
+  };
+
+  const updatePracticaLineNumbers = (editor, linesEl) => {
+    if (!linesEl) return;
+    const lines = (editor.value || "").split("\n").length;
+    const nums = [];
+    for (let i = 1; i <= Math.max(lines, 1); i++) nums.push(i);
+    linesEl.textContent = nums.join("\\n");
+  };
+
+  [htmlEditor, cssEditor].forEach(editor => {
+    const linesEl = editor.id === "practica-html-editor" ? $("#practica-html-lines") : $("#practica-css-lines");
+    
+    editor.addEventListener("input", () => {
+      updatePracticaLineNumbers(editor, linesEl);
+      updatePracticaPreview();
+    });
+    
+    editor.addEventListener("scroll", () => {
+      if (linesEl) linesEl.style.top = `${42 - editor.scrollTop}px`;
+    });
+    
+    editor.addEventListener("keydown", (e) => {
+      if (e.key === "Tab") {
+        e.preventDefault();
+        const start = editor.selectionStart;
+        const end = editor.selectionEnd;
+        editor.value = editor.value.substring(0, start) + "  " + editor.value.substring(end);
+        editor.selectionStart = editor.selectionEnd = start + 2;
+        updatePracticaLineNumbers(editor, linesEl);
+        updatePracticaPreview();
+      }
+    });
+  });
+
+  updatePracticaPreview();
 }
